@@ -12,9 +12,9 @@
 
 #include "../includes/Contact.class.hpp"
 
-Contact::Contact(void) : used(false)
+Contact::Contact(void) : used(false), FirstName("coucou")
 {
-  std::cout << "constructor working" << std::endl;
+  // std::cout << "constructor working" << std::endl;
   return;
 }
 
@@ -26,6 +26,7 @@ Contact::~Contact(void)
 
 void Contact::add(int i)
 {
+  this->used = true;
   std::cout << "Enter your first name" << std::endl;
   std::cin >> this->FirstName;
   std::cout << "Enter your last name" << std::endl;
@@ -48,6 +49,5 @@ void Contact::add(int i)
   std::cin >> this->_underwear_color;
   std::cout << "Enter your darkest secret" << std::endl;
   std::cin >> this->_darkest_secret;
-  this->used = true;
   std::cout << "Register completed" << std::endl;
 }

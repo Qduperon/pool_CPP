@@ -29,7 +29,7 @@ public:
   ~Contact(void);
 
   void add(int index);
-  void printinstance(Contact Current, int index);
+
 
 private:
 

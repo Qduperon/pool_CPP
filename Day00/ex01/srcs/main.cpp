@@ -12,27 +12,24 @@
 
 #include "../includes/Contact.class.hpp"
 
-void Contact::printinstance(Contact Current, int index)
-{
-  std::cout << index << "|";
-  std::cout << this->FirstName << "|";
-  std::cout << this->LastName << "|";
-  std::cout << this->nickname << "|" << std::endl;
-}
-
 void search (Contact tab[8])
 {
+  // std::cout << "ERROR" << std::endl;
+  // displayAll(tab[1]);
+  // std::cout << "ERROR" << std::endl;
   int i;
 
   i = 0;
-  while (i < 8)
+  std::cout << "ERROR" << std::endl;
+  std::cout << tab[i].used << std::endl;
+  std::cout << "ERROR2" << std::endl;
+  std::cout << &tab[i].FirstName << std::endl;
+  while (i < 8 && tab[i].used == true)
   {
-    std::cout << i << std::endl;
-    // if (tab[i].used)
-      // tab[i].printinstance(tab[i], i);
+    std::cout <<"         " << i << "i" <<tab[i].FirstName << "i" << tab[i].LastName << "i" << tab[i].nickname << "i" << std::endl;
     i++;
   }
-  return;
+  std::cout << "TRY" << std::endl;
 }
 
 int  currentTab(Contact tab[8])

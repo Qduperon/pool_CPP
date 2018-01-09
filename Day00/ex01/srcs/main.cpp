@@ -6,30 +6,66 @@
 /*   By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:55:07 by qduperon          #+#    #+#             */
-/*   Updated: 2018/01/08 19:02:49 by qduperon         ###   ########.fr       */
+/*   Updated: 2018/01/09 11:10:38 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Contact.class.hpp"
 
+std::string getRight(std::string str)
+{
+  size_t   strExpectedLength = 10;
+  char  completionChar = ' ';
+  char  truncatedMarkChar = '.';
+  std::string rightStr;
+
+  if (str.length() < strExpectedLength)
+  {
+    size_t strSize = str.length();
+    size_t i = -1;
+    while (++i < strExpectedLength - strSize)
+    {
+      rightStr += completionChar;
+    }
+    rightStr += str;
+  }
+    else
+    {
+      rightStr = str.substr(0, strExpectedLength -1);
+      rightStr += truncatedMarkChar;
+    }
+  return rightStr;
+}
+
 void search (Contact tab[8])
 {
-  // std::cout << "ERROR" << std::endl;
-  // displayAll(tab[1]);
-  // std::cout << "ERROR" << std::endl;
   int i;
+  std::string index;
+  int verif;
 
   i = 0;
-  std::cout << "ERROR" << std::endl;
-  std::cout << tab[i].used << std::endl;
-  std::cout << "ERROR2" << std::endl;
-  std::cout << &tab[i].FirstName << std::endl;
   while (i < 8 && tab[i].used == true)
   {
-    std::cout <<"         " << i << "i" <<tab[i].FirstName << "i" << tab[i].LastName << "i" << tab[i].nickname << "i" << std::endl;
+    std::cout <<"         " << i << "|" <<getRight(tab[i].FirstName) << "|" << getRight(tab[i].LastName) \
+      << "|" << getRight(tab[i].nickname) << "|" << std::endl;
     i++;
   }
-  std::cout << "TRY" << std::endl;
+  if (i != 0)
+  {
+    std::cout << "choose a index :" << std::endl;
+    std::cin >> index;
+    if (isdigit(index[0]))
+      verif = std::stoi(index);
+    if (verif <= (i - 1) && verif >= 0)
+      tab[verif].print();
+    else
+      std::cout << "back to the menu" << std::endl;
+  }
+  else
+  {
+    std::cout << "0 contact" << std::endl;
+    std::cout << "back to the menu" << std::endl;
+  }
 }
 
 int  currentTab(Contact tab[8])
@@ -61,16 +97,18 @@ int main()
   int index;
 
   std::cout << "Welcome to your mobile phone" << std::endl;
-  while (str.compare("EXIT"))
+  while (std::getline (std::cin,str))
   {
-    std::cin >> str;
-    index = currentTab(&tabContact[8]);
+    index = currentTab(tabContact);
     if (str.compare("SEARCH") == 0)
-      search(&tabContact[8]);
-    else if (str.compare("ADD") == 0)
-      tabContact[index].add(index);
+      search(tabContact);
+    else if (str.compare("ADD") == 0 && index != -1)
+      tabContact[index].add();
+    else if (str.compare("ADD") == 0 && index == -1)
+      std::cout << "your book is full" << std::endl;
     else if (str.compare("EXIT") != 0)
       error();
+    else if (!str.compare("EXIT"))
+      return (0);
   }
-  return 0;
 }

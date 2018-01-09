@@ -6,13 +6,13 @@
 /*   By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:17:42 by qduperon          #+#    #+#             */
-/*   Updated: 2018/01/08 18:57:20 by qduperon         ###   ########.fr       */
+/*   Updated: 2018/01/09 10:17:49 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Contact.class.hpp"
 
-Contact::Contact(void) : used(false), FirstName("coucou")
+Contact::Contact(void) : used(false)
 {
   // std::cout << "constructor working" << std::endl;
   return;
@@ -24,7 +24,7 @@ Contact::~Contact(void)
   return;
 }
 
-void Contact::add(int i)
+void Contact::add(void)
 {
   this->used = true;
   std::cout << "Enter your first name" << std::endl;
@@ -50,4 +50,19 @@ void Contact::add(int i)
   std::cout << "Enter your darkest secret" << std::endl;
   std::cin >> this->_darkest_secret;
   std::cout << "Register completed" << std::endl;
+}
+
+void Contact::print(void) const
+{
+  std::cout << this->FirstName << std::endl;
+  std::cout << this->LastName << std::endl;
+  std::cout << this->nickname << std::endl;
+  std::cout << this->_login << std::endl;
+  std::cout << this->_postal_adress << std::endl;
+  std::cout << this->_email << std::endl;
+  std::cout << this->_phone_number << std::endl;
+  std::cout << this->_birth << std::endl;
+  std::cout << this->_favorite_meal << std::endl;
+  std::cout << this->_underwear_color << std::endl;
+  std::cout << this->_darkest_secret << std::endl;
 }

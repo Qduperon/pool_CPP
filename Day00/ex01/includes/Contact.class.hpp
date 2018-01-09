@@ -6,7 +6,7 @@
 /*   By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:15:24 by qduperon          #+#    #+#             */
-/*   Updated: 2018/01/08 18:53:40 by qduperon         ###   ########.fr       */
+/*   Updated: 2018/01/09 10:41:07 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CONTACT_CLASS_HPP
 
 #include <iostream>
+#include <string>
 
 class Contact {
 public:
@@ -28,7 +29,8 @@ public:
 
   ~Contact(void);
 
-  void add(int index);
+  void add(void);
+  void print(void) const;
 
 
 private:
